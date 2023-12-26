@@ -12,7 +12,7 @@ const Table = () => {
 
   const get = async () => {
     axios
-      .get(`/api${window.location.pathname}`)
+      .get(`/api/${window.location.pathname}`)
       .then((res) => setarr(res?.data?.companies));
     // return res?.data;
   };

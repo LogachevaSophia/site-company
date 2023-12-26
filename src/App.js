@@ -224,11 +224,11 @@ function App() {
       <Route path='/category' element={ <Filter arr={arr_sphere} />}/>
       <Route path='/basket' element={ <BasketPage/>}/>
       {arr_categoty.map(function (el) {
-        const path = '/category/'+el.id;
+        const path = '/sphere/'+el.id;
           return  <Route path={path} element={ <Table/>}/>;
         })}
        {arr_sphere.map(function (el) {
-        const path = '/sphere/'+el.id;
+        const path = '/category/'+el.id;
           return  <Route path={path} element={ <Table/>}/>;
         })}
      
