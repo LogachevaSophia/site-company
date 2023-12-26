@@ -2,31 +2,39 @@ import { createContext, useContext, useState } from "react";
 const BasketContext = createContext();
 export const useBasketItems = () => useContext(BasketContext);
 export default function BasketProvider({ children }) {
-    const [basketItems, setBasketItems] = useState([]);
+  const [basketItems, setBasketItems] = useState([]);
   const [price, setPrice] = useState(0);
-//   const { sphereItems, allItems, setAllItems, categoryItems, allNetworks } =
-    // useSphereItems();
 
-    const addItem = (item)=>{
-        basketItems.push(item);
-        // console.log(basketItems.find((elem)=>elem.id==item.id)!=-1)
-        // console.log(basketItems);
-        
+
+  const addItem = (item) => {
+    if (!basketItems.some(e => e.id === item.id))
+    basketItems.push(item);
+
+
+  };
+  const deleteItem = (item) => {
+    const basketItems2 = basketItems.filter((el) => el?.id !== item?.id);
+    setBasketItems(basketItems2);
+  };
+
+  const addAllItems = (items) => {
+    for (let i=0;i<items.length;i++){
+      if (!basketItems.some(e => e.id === items[i].id))
+      basketItems.push(items[i])
     }
-    return (
-        <BasketContext.Provider
-          value={{
-            basketItems,
-            addItem,
-            // removeItem,
-            // price,
-            // changeBlock,
-            // changeAll,
-            // setBasketItems,
-            // calcPrice,
-          }}
-        >
-          {children}
-        </BasketContext.Provider>
-      );
-    }
+  }
+
+
+  return (
+    <BasketContext.Provider
+      value={{
+        basketItems,
+        addItem,
+        deleteItem,
+        addAllItems
+      }}
+    >
+      {children}
+    </BasketContext.Provider>
+  );
+}

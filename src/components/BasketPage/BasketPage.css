@@ -1,0 +1,31 @@
+.table {
+  vertical-align: middle;
+  text-align: center;
+  border-spacing: 0;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  color: #9c9494;
+}
+.table thead {
+  color: #4646b0;
+  font-weight: bold;
+}
+.table thead th {
+  padding: 10px;
+}
+
+.table tr {
+  background-color: white;
+}
+
+.table td:first-child {
+  text-align: left;
+}
+.buy {
+
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
+  border: 2px solid black;
+}

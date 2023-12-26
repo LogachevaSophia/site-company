@@ -1,15 +1,18 @@
 import "./App.css";
 import Filter from "./components/filter_sphere/filter-sphere";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Table from "./components/table/Table";
+import axios from 'axios';
 import BasketPage from "./components/BasketPage/BasketPage";
 
 
+
+
 function App() {
-  const arr_sphere = [
+  const arr_categoty = [
     {
-      id: "autoservice",
+      id: "car-maintenance",
       title: "Автосервис",
     },
     {
@@ -17,31 +20,31 @@ function App() {
       title: "Алкоголь",
     },
     {
-      id: "child",
+      id: "child-supplies",
       title: "Детские товары",
     },
     {
-      id: "autoproducts",
+      id: "car-parts",
       title: "Автотовары",
     },
     {
-      id: "analysis",
+      id: "analyzes",
       title: "Анализы",
     },
     {
-      id: "Pharmacies",
+      id: "pharmacy",
       title: "Аптеки, оптики, ортопедия",
     },
     {
-      id: "bank",
+      id: "banks",
       title: "Банки, финансы",
     },
     {
-      id: "cosmetic",
+      id: "cosmetics",
       title: "Косметика, парфюмерия",
     },
     {
-      id: "petSupplies",
+      id: "zoo-supplies",
       title: "Зоотовары",
     },
     {
@@ -49,11 +52,11 @@ function App() {
       title: "Кафе, рестораны, общепит",
     },
     {
-      id: "bakeries",
+      id: "bakery",
       title: "Пекарни, кондитерские магазиины",
     },
     {
-      id: "products",
+      id: "food",
       title: "Продукты",
     },
     {
@@ -61,11 +64,11 @@ function App() {
       title: "Табак",
     },
     {
-      id: "technic",
+      id: "electrical-goods",
       title: "Техника, электроника",
     },
     {
-      id: "services",
+      id: "service",
       title: "Услуги, быт",
     },
     {
@@ -77,11 +80,11 @@ function App() {
       title: "Пункты выдачи товаров",
     },
     {
-      id: "beautySalon",
+      id: "beauty-salons",
       title: "Салоны красоты, медицина красоты",
     },
     {
-      id: "sexshop",
+      id: "sex-shop",
       title: "Сексшоп",
     },
     {
@@ -105,37 +108,127 @@ function App() {
       title: "Медицина",
     },
     {
-      id: "kovorking",
+      id: "coworking",
       title: "Коворкинг",
     },
   ];
 
   const main = [
     {
-      id: "category",
-      title: "Категория",
+      id: "sphere",
+      title: "Cфера деятельности",
       
     },
     {
-      id: "sphere",
-      title: "Сфера",
+      id: "category",
+      title: "Категория помещения",
     },
   ];
 
-  
+  const arr_sphere = [
+    {
+      id: "1m-20m",
+      title: "Субаренда от 1 до 20 м",
+      class: "home"
+    },
+    {
+      id: "30m-100m",
+      title: "ПВЗ, даркстор/китчен, офис от 30 до 100 м",
+      class: "home"
+    },
+    {
+      id: "15m-55m",
+      title: "Высокий трафик, отдельный вход от 15 до 55 м",
+      class: "home",
+    },
+    {
+      id: "joint-entry-15m-55m",
+      title: "Высокий трафик совместный вход / окно от 15 до 55 м",
+      class: "home"
+    },
+    {
+      id: "20m-90m",
+      title: "Высокий трафик от 20 до 90 м",
+      class: "home"
+    },
+    {
+      id: "80m-160m",
+      title: "Универсальное с высоким трафиком от 80 до 160 м",
+      class: "home"
+    },
+    {
+      id: "80m-150m",
+      title: "Универсальное с низким трафиком/не первая линия от 80 до 150 м",
+      class: "home"
+    },
+    {
+      id: "120m-250m",
+      title: "Универсальное с высоким трафиком от 120 до 250 м",
+      class: "home"
+    },
+    {
+      id: "low-traffic-120m-250m",
+      title: "Универсальное с низким трафиком/не первая линия от 120 до 250 м",
+      class: "home"
+    },
+    {
+      id: "230m-380m",
+      title: "Универсальное с высоким трафиком от 230 до 380 м",
+      class: "home"
+    },
+    {
+      id: "low-traffic-230m-380m",
+      title: "Универсальное с низким трафиком/не первая линия от 230 до 380 м",
+      class: "home"
+    },
+    {
+      id: "retail-380m-800m",
+      title: "Универсальное под ритейл от 380 до 800 м",
+      class: "home"
+    },
+    {
+      id: "no-retail-380m-800m",
+      title: "Универсальное не под ритейл от 380 до 800 м",
+      class: "home"
+    },
+    {
+      id: "from-750m",
+      title: "Очень большое от 750 м",
+      class: "home"
+    },
+    {
+      id: "non-obvious",
+      title: "Неочевидного формата",
+      class: "home"
+    },
+    {
+      id: "purchase-of-premises",
+      title: "Покупка помещений",
+      class: "home"
+    },
+    {
+      id: "car-traffic",
+      title: "Автомобильный трафик",
+      class: "home"
+    }];
 
-  const [state, setState] = useState(1);
+
 
   return (
     <div className="App">
     <header className="App-header">
     <BrowserRouter>
     <Routes>
-      <Route path='/' element={ <Filter arr={main} />}/>
+      <Route path='/' element={ <Filter arr={main} main={true}/>}/>
+      <Route path='/sphere' element={ <Filter arr={arr_categoty} />}/>
       <Route path='/category' element={ <Filter arr={arr_sphere} />}/>
       <Route path='/basket' element={ <BasketPage/>}/>
-      {arr_sphere.map(function (el) {
+      {arr_categoty.map(function (el) {
         const path = '/category/'+el.id;
+          return  <Route path={path} element={ <Table/>}/>;
+        })}
+       {arr_sphere.map(function (el) {
+        const path = '/sphere/'+el.id;
           return  <Route path={path} element={ <Table/>}/>;
         })}
      

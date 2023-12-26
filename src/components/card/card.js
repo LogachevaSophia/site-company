@@ -1,7 +1,7 @@
 import "./card.css";
 import { useNavigate } from "react-router-dom";
 
-const Card = ({ id, title, onClick }) => {
+const Card = ({ id, title, onClick, ...props }) => {
   
 
 
@@ -9,7 +9,7 @@ const Card = ({ id, title, onClick }) => {
     <div className="card" onClick={onClick}>
       <div className="image">
        <div className="circle">
-        <div id={id}></div>
+        <div id={id} className={props?.class}></div>
        </div>
       </div>
       <p>{title}</p>

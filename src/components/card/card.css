@@ -1,5 +1,5 @@
 .card{
-    background-color: azure;
+    /* background-color: azure; */
     border-radius: 5px;
     color: black;
     display: flex;
@@ -30,7 +30,7 @@
 .image .circle{
     height: 72px;
     width:72px;
-    background-color: bisque;
+    background-color: #ECE2E2;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -48,6 +48,96 @@
     min-height: 50px;
 }
 
-#autoservice{
+#car-maintenance{
     background-image: url(../../img/autoservice.png);
 }
+#alcohol{
+    background-image: url(../../img/cocktail.png)}
+#child-supplies{
+    background-image: url(../../img/baby.png)}
+#car-parts{
+    background-image: url(../../img/car.png)
+}
+#analyzes{
+    background-image: url(../../img/test.png)
+}
+#pharmacy{
+    background-image: url(../../img/pharmacy.png);
+}
+#banks{
+    background-image: url(../../img/bank.png);
+}
+
+#cosmetics{
+    background-image: url(../../img/cosmetics.png);
+}
+
+#zoo-supplies{
+    background-image: url(../../img/pet-shop.png);
+}
+
+#cafe{
+    background-image: url(../../img/cafe.png);
+}
+#bakery{
+    background-image: url(../../img/cafe.png);
+}
+#food{
+    background-image: url(../../img/dairy.png);
+}
+
+#tobacco{
+    background-image: url(../../img/smoking.png);
+}
+
+#electrical-goods{
+    background-image: url(../../img/circuit.png);
+}
+
+#service{
+    background-image: url(../../img/cleaning-products.png);
+}
+
+#furniture{
+    background-image: url(../../img/sofa.png);
+}
+
+#delivery{
+    background-image: url(../../img/package.png);
+}
+#beauty-salons{
+    background-image: url(../../img/hairdresser.png);
+}
+#sex-shop{
+    background-image: url(../../img/bunny.png);
+}
+#sport{
+    background-image: url(../../img/sport.png);
+}
+#flowers{
+    background-image: url(../../img/bouquet.png);
+}
+
+#jewelry{
+    background-image: url(../../img/diamond-ring.png);
+}
+
+#clothes{
+    background-image: url(../../img/sunglasses.png);
+}
+#medicine{
+    background-image: url(../../img/stethoscope.png);
+}
+#coworking{
+    background-image: url(../../img/meeting.png);
+}
+
+#category, #sphere, .home{
+    background-image: url(../../img/home.png);
+}
+
+
+
+
+
+
